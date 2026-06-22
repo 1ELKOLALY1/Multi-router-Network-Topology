@@ -1,0 +1,37 @@
+===========================================
+ROUTER 4 CONFIGURATION
+Device: Cisco 2911 Router
+===========================================
+INTERFACE CONFIGURATION
+interface GigabitEthernet0/0
+ ip address 192.168.40.1 255.255.255.0
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/1
+ ip address 192.168.3.2 255.255.255.252
+ duplex auto
+ speed auto
+
+interface GigabitEthernet0/2
+ ip address 192.168.4.1 255.255.255.252
+ duplex auto
+ speed auto
+===========================================
+DYNAMIC ROUTING PROTOCOL (OSPF)
+router ospf 1
+ router-id 4.4.4.4
+ log-adjacency-changes
+ redistribute rip subnets 
+ network 192.168.3.0 0.0.0.3 area 0
+ network 192.168.40.0 0.0.0.255 area 0
+ network 192.168.4.0 0.0.0.3 area 0
+===========================================
+ROUTING INFORMATION PROTOCOL (RIP)
+router rip
+ version 2
+ redistribute ospf 1 metric 1 
+ network 192.168.4.0
+ network 192.168.40.0
+ no auto-summary
+===========================================

@@ -1,0 +1,28 @@
+===========================================
+ROUTER 1 CONFIGURATION
+Device: Cisco 2911 Router
+===========================================
+INTERFACE CONFIGURATION
+interface GigabitEthernet0/0
+ ip address 192.168.10.1 255.255.255.0
+ duplex auto
+ speed auto
+-------------------------------------------
+interface GigabitEthernet0/1
+ ip address 192.168.1.1 255.255.255.252
+ duplex auto
+ speed auto
+===========================================
+DYNAMIC ROUTING PROTOCOL (OSPF)
+router ospf 1
+ router-id 1.1.1.1
+ log-adjacency-changes
+ passive-interface GigabitEthernet0/0
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.1.0 0.0.0.3 area 0
+===========================================
+DHCP
+ip dhcp pool LAN1
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+===========================================
