@@ -173,13 +173,6 @@ interface Serial0/3/1
  clock rate 2000000
  shutdown
 ===========================================
-DYNAMIC ROUTING PROTOCOL (OSPF)
-router ospf 1
- router-id 5.5.5.5
- log-adjacency-changes
- network 192.168.50.0 0.0.0.255 area 0
- network 192.168.4.0 0.0.0.3 area 0
-===========================================
 ROUTING INFORMATION PROTOCOL (RIP)
 router rip
  version 2
